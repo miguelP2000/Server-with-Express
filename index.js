@@ -30,9 +30,7 @@ const products = new Contenedor('products.json');
 
 app.get("/productos", async(req, res) => {
     try {
-        let todosLosProductos = await products.getAll().then((res) => {
-            return res;
-        });
+        let todosLosProductos = await products.getAll();
         //   console.log(todosLosProductos);
         res.send(todosLosProductos);
     } catch (error) {
@@ -42,9 +40,7 @@ app.get("/productos", async(req, res) => {
 
 app.get("/productoRandom", async(req, res) => {
     try {
-        let todosLosProductos = await products.getAll().then((res) => {
-            return res;
-        });
+        let todosLosProductos = await products.getAll();
         let id = todosLosProductos.map((e) => e.id);
         let numero = Math.floor(Math.random() * (id.length)) + 1;
         let objRandom = todosLosProductos.filter((e) => e.id === numero);
